@@ -49,9 +49,6 @@ This project documents the full build of a Microsoft Endpoint Configuration Mana
 - IT-CL01  
 - HR-CL01  
 - MKT-CL01  
-
-**Diagram:**  
-![Architecture Diagram](Mecm-Lab/screenshots/architecture/Architecturee.png) 
 ---
 
 ## Deliverables (What This Lab Proves)
