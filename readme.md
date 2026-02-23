@@ -32,10 +32,8 @@ This project documents the full build of a Microsoft Endpoint Configuration Mana
 | Clients | Windows 10/11 domain joined |
 
 **VM list screenshot:**  
-`/screenshots/install/00-vms.png`
+![MECM Lab Architecture](Mecm-Lab/screenshots/VM%20list.JPG)
 
-**IP plan screenshot:**  
-`/screenshots/install/01-ip-plan.png`
 
 ---
 
