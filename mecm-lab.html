@@ -3,53 +3,144 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>MECM Home Lab | Brendan Wright</title>
+  <title>MECM Home Lab | Brendan's I.T. Portfolio</title>
 
   <style>
-    body{font-family:Arial,Helvetica,sans-serif;max-width:900px;margin:40px auto;padding:0 16px;line-height:1.6}
-    h1{margin-bottom:5px}
-    .tag{display:inline-block;border:1px solid #ddd;border-radius:20px;padding:4px 10px;margin:4px;font-size:13px}
-    img{max-width:100%;border-radius:10px;border:1px solid #ccc;margin-top:15px}
-    a{color:#0b63ce;text-decoration:none;font-weight:bold}
+    :root{
+      --max: 980px;
+      --border:#ddd;
+      --muted:#555;
+      --bg:#fafafa;
+    }
+    body{font-family:Arial,Helvetica,sans-serif;margin:0;background:var(--bg);color:#111}
+    .wrap{max-width:var(--max);margin:0 auto;padding:28px 16px 48px}
+    a{color:#0b63ce;text-decoration:none;font-weight:700}
+    a:hover{text-decoration:underline}
+    .nav{margin-bottom:18px}
+    .hero{background:#fff;border:1px solid var(--border);border-radius:16px;padding:18px 18px 14px}
+    h1{margin:6px 0 6px;font-size:30px}
+    .sub{color:var(--muted);margin:0 0 10px}
+    .tags{margin:10px 0 2px}
+    .tag{display:inline-block;border:1px solid var(--border);border-radius:999px;padding:5px 11px;margin:6px 6px 0 0;font-size:13px;background:#fff}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:16px}
+    @media(min-width:900px){.grid{grid-template-columns:1.2fr 0.8fr}}
+    .card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:16px}
+    h2{margin:0 0 10px;font-size:20px}
+    p{margin:0 0 10px}
+    ul{margin:0;padding-left:18px}
+    li{margin:6px 0}
+    .kpi{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+    .kpi div{border:1px solid var(--border);border-radius:14px;padding:12px;background:#fff}
+    .kpi b{display:block;margin-bottom:4px}
+    img{max-width:100%;height:auto;border:1px solid var(--border);border-radius:14px}
+    .slot{font-size:13px;color:var(--muted);margin-top:8px}
+    .toc a{display:block;padding:6px 0}
+    code{background:#f3f3f3;border:1px solid var(--border);border-radius:8px;padding:2px 6px}
   </style>
 </head>
 
 <body>
+  <div class="wrap">
+    <div class="nav">
+      <a href="index.html">← Back to Portfolio</a>
+    </div>
 
-<a href="index.html">← Back to Portfolio</a>
+    <div class="hero">
+      <h1>MECM Home Lab — Endpoint Management & Patch Infrastructure</h1>
+      <p class="sub">
+        End-to-end build in VirtualBox: AD DS/DNS/DHCP, SQL Server, WSUS, and MECM site roles.
+        Validated patching by achieving a successful SUP synchronization and confirming updates begin populating in the MECM console.
+      </p>
 
-<h1>MECM Home Lab – Enterprise Endpoint Management</h1>
+      <div class="tags">
+        <span class="tag">MECM</span>
+        <span class="tag">WSUS / SUP</span>
+        <span class="tag">SQL Server</span>
+        <span class="tag">Active Directory</span>
+        <span class="tag">Troubleshooting</span>
+      </div>
 
-<p>
-Built a fully functional Microsoft Endpoint Configuration Manager (MECM) lab environment from the ground up to simulate real-world enterprise endpoint management and patching infrastructure.
-</p>
+      <div class="kpi">
+        <div><b>Domain</b><span>corpnet.local</span></div>
+        <div><b>Site Server</b><span>SCCM (Primary Site)</span></div>
+        <div><b>Site Code</b><span>HQC</span></div>
+        <div><b>Validation</b><span><code>WSyncMgr.log</code> = Sync succeeded</span></div>
+      </div>
+    </div>
 
-<div>
-<span class="tag">MECM</span>
-<span class="tag">WSUS/SUP</span>
-<span class="tag">SQL Server</span>
-<span class="tag">Active Directory</span>
-<span class="tag">Troubleshooting</span>
-</div>
+    <div class="grid">
+      <div class="card">
+        <h2 id="architecture">Architecture</h2>
+        <ul>
+          <li><b>DC01</b> — AD DS / DNS / DHCP — <b>192.168.0.1</b></li>
+          <li><b>SCCM</b> — MECM + SQL + WSUS/SUP — <b>192.168.0.51</b></li>
+          <li><b>CLIENT01-IT</b> — Domain-joined client — <b>192.168.0.52</b></li>
+        </ul>
 
-<h2>Environment Overview</h2>
-<ul>
-<li><strong>Domain Controller (DC01)</strong> – AD DS, DNS, DHCP – 192.168.0.1</li>
-<li><strong>MECM Server</strong> – Primary Site, SQL, WSUS/SUP – 192.168.0.51</li>
-<li><strong>Client01-IT</strong> – Domain-joined workstation – 192.168.0.52</li>
-</ul>
+        <p style="margin-top:12px"><b>Diagram</b></p>
+        <img src="assets/images/mecm/Architecturee.png" alt="MECM lab architecture diagram">
+        <div class="slot">Screenshot slot: architecture diagram (already wired)</div>
+      </div>
 
-<h2>Architecture Diagram</h2>
-<img src="assets/images/mecm/Architecturee.png" alt="MECM Lab Architecture">
+      <div class="card toc">
+        <h2>On this page</h2>
+        <a href="#architecture">Architecture</a>
+        <a href="#build">Build Steps</a>
+        <a href="#sync">SUP / WSUS Sync Proof</a>
+        <a href="#troubleshooting">Troubleshooting</a>
+        <a href="#next">Next Improvements</a>
+      </div>
+    </div>
 
-<h2>Key Accomplishments</h2>
-<ul>
-<li>Installed and configured MECM Primary Site</li>
-<li>Integrated WSUS with Software Update Point</li>
-<li>Resolved SUP synchronization and configuration issues</li>
-<li>Achieved successful Microsoft Update sync</li>
-<li>Validated enterprise patch management workflow</li>
-</ul>
+    <div class="card" style="margin-top:16px">
+      <h2 id="build">Build Steps (High-Level)</h2>
+      <ol>
+        <li>Built domain services on DC01 (AD DS, DNS, DHCP) and established naming + IP plan.</li>
+        <li>Joined SCCM server to the domain and installed SQL Server with MECM-compatible settings.</li>
+        <li>Installed MECM Current Branch Primary Site and core roles (MP/DP).</li>
+        <li>Installed WSUS and configured Software Update Point integration.</li>
+        <li>Validated synchronization end-to-end and confirmed the update catalog begins populating.</li>
+      </ol>
+      <div class="slot">Screenshot slots: AD OU tree, SQL instance/collation, MECM console, role status</div>
+    </div>
 
+    <div class="card" style="margin-top:16px">
+      <h2 id="sync">SUP / WSUS Sync Proof</h2>
+      <p>
+        Primary validation: Software Update Point synchronization completed successfully.
+        This confirms WSUS connectivity, SUP configuration, and the update synchronization pipeline.
+      </p>
+      <ul>
+        <li>Log reviewed: <code>WSyncMgr.log</code> → <b>Sync succeeded</b></li>
+        <li>Configuration confirmed: <code>WCM.log</code> → WSUS config success</li>
+      </ul>
+      <div class="slot">Screenshot slot: WSyncMgr.log showing “Sync succeeded”</div>
+      <div class="slot">Screenshot slot: WCM.log showing default SUP + WSUS_CONFIG_SUCCESS</div>
+    </div>
+
+    <div class="card" style="margin-top:16px">
+      <h2 id="troubleshooting">Troubleshooting Summary</h2>
+      <p><b>Issue:</b> SUP present but no default SUP / WSUS update source not detected.</p>
+      <p><b>Approach:</b> Used MECM logs to isolate configuration state vs WSUS functionality.</p>
+      <ul>
+        <li>Verified WSUS accessibility and content directory readiness.</li>
+        <li>Forced site components to reload configuration by restarting MECM services:
+          <code>SMS_EXECUTIVE</code> and <code>SMS_SITE_COMPONENT_MANAGER</code>.
+        </li>
+        <li>Re-validated via <code>WCM.log</code> and <code>WSyncMgr.log</code>.</li>
+      </ul>
+      <div class="slot">Screenshot slot: the original error + the final success log lines</div>
+    </div>
+
+    <div class="card" style="margin-top:16px">
+      <h2 id="next">Next Improvements</h2>
+      <ul>
+        <li>Create collections by department (IT) and validate client push installation.</li>
+        <li>Create a Software Update Group (SUG) and deploy to CLIENT01-IT.</li>
+        <li>Add 1–2 application deployments (7-Zip / Notepad++).</li>
+        <li>Optional: PXE/OSD task sequence for full imaging workflow.</li>
+      </ul>
+    </div>
+  </div>
 </body>
 </html>
