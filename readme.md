@@ -43,12 +43,12 @@ This project documents the full build of a Microsoft Endpoint Configuration Mana
 
 ### Core Servers
 - **DC01** — AD DS, DNS, DHCP  
-- **SCCM** — MECM + SQL + WSUS + SUP + DP + MP  
+- **SCCM** — MECM + SQL + Reporting Services + SUP + DP + MP  
 
 ### Clients
-- IT-CL01  
-- HR-CL01  
-- MKT-CL01  
+- IT-Client01  
+- HR-Client02  
+- MKT-Client03  
 ---
 
 ## Deliverables (What This Lab Proves)
