@@ -3,25 +3,53 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Brendan Wright | IT Lab Portfolio</title>
+  <title>Brendan's I.T. Portfolio</title>
   <style>
-    body{font-family:Arial,Helvetica,sans-serif;max-width:900px;margin:40px auto;padding:0 16px;line-height:1.5}
-    header{margin-bottom:24px}
-    .card{border:1px solid #ddd;border-radius:12px;padding:16px;margin:16px 0}
+    body{font-family:Arial,Helvetica,sans-serif;max-width:980px;margin:44px auto;padding:0 16px;line-height:1.55}
+    header{margin-bottom:22px}
+    .sub{color:#444;margin-top:6px}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px}
+    @media(min-width:860px){.grid{grid-template-columns:1fr 1fr}}
+    .card{border:1px solid #ddd;border-radius:14px;padding:18px}
+    .card h2{margin:0 0 8px}
+    .meta{color:#555;margin:0 0 10px}
+    .tags{margin:10px 0 14px}
+    .tag{display:inline-block;border:1px solid #ddd;border-radius:999px;padding:4px 10px;margin:6px 6px 0 0;font-size:13px;color:#333}
     a{color:#0b63ce;text-decoration:none}
     a:hover{text-decoration:underline}
+    .cta{display:inline-block;margin-top:10px;font-weight:700}
   </style>
 </head>
 <body>
   <header>
-    <h1>IT Lab Portfolio</h1>
-    <p>Projects built in a home lab to demonstrate enterprise IT skills.</p>
+    <h1>Brendan's I.T. Lab Portfolio</h1>
+    <p class="sub">Projects built in a home lab to demonstrate enterprise IT skills.</p>
   </header>
 
-  <section class="card">
-    <h2>MECM Home Lab – Endpoint Management & Patch Infrastructure</h2>
-    <p>Built an MECM Current Branch lab with AD DS, DNS, DHCP, SQL Server, WSUS, and a functioning Software Update Point with successful synchronization.</p>
-    <p><a href="mecm-lab.html">View project →</a></p>
+  <section class="grid">
+    <div class="card">
+      <h2>MECM Home Lab — Endpoint Management & Patch Infrastructure</h2>
+      <p class="meta">
+        Built a working Microsoft Endpoint Configuration Manager lab from the ground up: AD DS/DNS/DHCP, SQL Server, WSUS, and MECM site roles.
+        Validated a real patch-management workflow by fixing SUP/WSUS configuration issues and achieving successful software update synchronization.
+      </p>
+
+      <div class="tags">
+        <span class="tag">MECM</span>
+        <span class="tag">WSUS / SUP</span>
+        <span class="tag">SQL Server</span>
+        <span class="tag">Active Directory</span>
+        <span class="tag">Troubleshooting</span>
+      </div>
+
+      <a class="cta" href="mecm-lab.html">View MECM project →</a>
+    </div>
+
+    <div class="card">
+      <h2>More projects</h2>
+      <p class="meta">More lab writeups will be added here as they are completed.</p>
+      <!-- Add more project cards here later -->
+    </div>
   </section>
 </body>
 </html>
