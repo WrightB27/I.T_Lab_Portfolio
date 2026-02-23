@@ -51,8 +51,7 @@ This project documents the full build of a Microsoft Endpoint Configuration Mana
 - MKT-CL01  
 
 **Diagram:**  
-![Architecture Diagram](screenshots/architecture/architecturee.png) 
-
+![Architecture Diagram](MECM-Lab/screenshots/architecture/architecturee.png)
 ---
 
 ## Deliverables (What This Lab Proves)
