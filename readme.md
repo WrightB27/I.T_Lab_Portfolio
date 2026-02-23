@@ -3,8 +3,8 @@
 ## Project Summary
 This project documents the full build of a Microsoft Endpoint Configuration Manager (MECM) Current Branch lab from the ground up using VirtualBox. The environment includes Active Directory, DNS, DHCP, SQL Server, WSUS, and an MECM Primary Site server configured with core roles including Management Point, Distribution Point, and Software Update Point. WSUS was integrated with MECM to enable centralized patch management and synchronization was validated through log monitoring and successful update deployments. Multiple Windows clients were domain-joined and configured with the ConfigMgr client to validate discovery, inventory, policy retrieval, and deployments. Application deployment and software update compliance were tested end-to-end. All major installation, configuration, and troubleshooting steps were documented to mirror real enterprise workflows and support reproducibility.
 
-**Architecture diagram:**  
-`/screenshots/architecture/00-lab-diagram.png`
+## Architecture Diagram
+![MECM Lab Architecture](screenshots/topology.png)
 
 ---
 
