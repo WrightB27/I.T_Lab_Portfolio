@@ -5,136 +5,146 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Brendan's I.T Portfolio</title>
   <style>
-  body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-
- background-image: url("Mecm-Lab/screenshots/5eb20e67-5617-4492-acf4-d1c7904706a1.png");
-background-size: contain;        /* fit entire image */
-background-position: center;
-background-repeat: no-repeat;
-background-color: #ffffff;       /* fills empty space clean */
-}
-
-    /* Top bar: title left/center feel + other projects on right */
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      padding: 22px 20px;
-      border-bottom: 1px solid #ddd;
-      gap: 20px;
-    }
-
-    .title-block {
-      flex: 1;
-      text-align: center;
-    }
-
-    .title-block h1 {
+    body {
       margin: 0;
-      font-size: 28px;
-      font-weight: 800;
+      min-height: 100vh;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .resume-row {
-      margin-top: 12px;
+    /* This is your "monitor/desktop" canvas */
+    .screen {
+      width: min(1400px, 98vw);
+      aspect-ratio: 16 / 9;
+      position: relative;
+      background-image: url("Mecm-Lab/screenshots/5eb20e67-5617-4492-acf4-d1c7904706a1.png");
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    /* Overlay box that sits INSIDE the black command prompt area */
+    .cmd-overlay {
+      position: absolute;
+
+      /* TUNE THESE if needed */
+      left: 12%;
+      top: 27%;
+      width: 76%;
+      height: 56%;
+
+      font-family: Consolas, "Courier New", monospace;
+      color: #21ff4a;
+      line-height: 1.5;
+      overflow: hidden;
+      pointer-events: none; /* so clicks don't get weird outside interactive elements */
+    }
+
+    /* Make only the interactive items clickable */
+    .cmd-overlay a,
+    .cmd-overlay button {
+      pointer-events: auto;
+    }
+
+    .prompt-line {
+      font-size: clamp(16px, 1.7vw, 22px);
+      font-weight: 600;
+      margin: 0 0 14px 0;
+      white-space: nowrap;
+    }
+
+    .cmd-grid {
+      display: grid;
+      grid-template-columns: 1fr 260px;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .cmd-title {
+      font-size: clamp(16px, 1.6vw, 20px);
+      margin: 0 0 8px 0;
+    }
+
+    .cmd-text {
+      margin: 0 0 14px 0;
+      color: #b8ffbf;
+      font-size: clamp(13px, 1.25vw, 16px);
+      max-width: 62ch;
     }
 
     .resume-btn {
       display: inline-block;
-      padding: 12px 18px;
-      border-radius: 8px;
+      padding: 10px 14px;
+      border-radius: 6px;
       text-decoration: none;
       font-weight: 700;
-      border: 2px solid #000;
-      color: #000;
-      background: #fff;
+      border: 1px solid #21ff4a;
+      color: #21ff4a;
+      background: rgba(0, 0, 0, 0.35);
     }
 
-    .right-nav {
-      width: 220px;
-      text-align: right;
+    .mecm-link {
+      display: inline-block;
+      margin-top: 10px;
+      color: #21ff4a;
+      text-decoration: underline;
+      font-weight: 700;
+      font-size: clamp(14px, 1.35vw, 18px);
     }
 
     .right-nav h2 {
       margin: 0 0 10px 0;
-      font-size: 14px;
-      font-weight: 800;
-      letter-spacing: 0.3px;
+      font-size: clamp(12px, 1.1vw, 14px);
       text-transform: uppercase;
-      color: #333;
+      letter-spacing: 0.3px;
+      color: #b8ffbf;
     }
 
     .right-nav a {
       display: block;
       margin: 8px 0;
-      color: #444;
+      color: #21ff4a;
       text-decoration: underline;
-    }
-
-    main {
-      flex: 1;
-      padding: 28px 20px;
-      display: flex;
-      justify-content: flex-start;
-    }
-
-    /* MECM section shifted toward the middle-left */
-    .mecm-section {
-      max-width: 640px;
-      margin-left: 18%;
-    }
-
-    .mecm-link {
-      color: #0066cc;
-      text-decoration: underline;
-      font-weight: 700;
-      font-size: 18px;
-    }
-
-    .mecm-overview {
-      margin: 10px 0 0 0;
-      color: #222;
-      line-height: 1.45;
-      max-width: 520px;
+      font-size: clamp(13px, 1.2vw, 16px);
     }
   </style>
 </head>
-<body>
-  <header>
-    <div class="title-block">
-      <h1>Brendan's I.T Portfolio</h1>
 
-      <!-- Resume button moved just below the title -->
-      <div class="resume-row">
-        <a class="resume-btn" href="files/Brendan_Kyle_Wright_Final.pdf" download>
-          Download Resume
-        </a>
+<body>
+  <div class="screen">
+    <div class="cmd-overlay">
+      <p class="prompt-line">C:\Users\Brendan&gt; Welcome to my Lab Portfolio!</p>
+
+      <div class="cmd-grid">
+        <!-- Left side content (inside prompt area) -->
+        <div>
+          <p class="cmd-title">Brendan's I.T Portfolio</p>
+
+          <a class="resume-btn" href="files/Brendan_Kyle_Wright_Final.pdf" download>
+            Download Resume
+          </a>
+
+          <a class="mecm-link" href="mecm-lab.html">
+            Microsoft Endpoint Configuration Manager Lab
+          </a>
+
+          <p class="cmd-text">
+            End-to-end MECM home lab build showcasing domain integration, client management,
+            and software/patch deployment. Documentation includes configuration steps and screenshots.
+          </p>
+        </div>
+
+        <!-- Right side content (inside prompt area) -->
+        <nav class="right-nav" aria-label="Other projects">
+          <h2>Other Projects</h2>
+          <a href="#">Project Placeholder 1</a>
+          <a href="#">Project Placeholder 2</a>
+          <a href="#">Project Placeholder 3</a>
+        </nav>
       </div>
     </div>
-
-    <!-- Project placeholders moved to top-right, stacked top-down -->
-    <nav class="right-nav" aria-label="Other projects">
-      <h2>Other Projects</h2>
-      <a href="#">Project Placeholder 1</a>
-      <a href="#">Project Placeholder 2</a>
-      <a href="#">Project Placeholder 3</a>
-    </nav>
-  </header>
-
-  <main>
-    <!-- MECM link moved toward middle-left + concise overview -->
-    <section class="mecm-section">
-      <a class="mecm-link" href="mecm-lab.html">Microsoft Endpoint Configuration Manager Lab</a>
-      <p class="mecm-overview">
-        End-to-end MECM home lab build showcasing domain integration, client management, and software/patch deployment.
-        Documentation includes configuration steps and screenshots for portfolio review.
-      </p>
-    </section>
-  </main>
+  </div>
 </body>
 </html>
