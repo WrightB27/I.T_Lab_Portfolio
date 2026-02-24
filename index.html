@@ -13,24 +13,34 @@
       flex-direction: column;
     }
 
+    /* Top bar: title left/center feel + other projects on right */
     header {
-      padding: 24px 20px;
-      text-align: center;
-      font-size: 28px;
-      font-weight: 700;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 22px 20px;
+      border-bottom: 1px solid #ddd;
+      gap: 20px;
     }
 
-    main {
+    .title-block {
       flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
+      text-align: center;
+    }
+
+    .title-block h1 {
+      margin: 0;
+      font-size: 28px;
+      font-weight: 800;
+    }
+
+    .resume-row {
+      margin-top: 12px;
     }
 
     .resume-btn {
       display: inline-block;
-      padding: 14px 22px;
+      padding: 12px 18px;
       border-radius: 8px;
       text-decoration: none;
       font-weight: 700;
@@ -39,47 +49,86 @@
       background: #fff;
     }
 
-    footer {
+    .right-nav {
+      width: 220px;
+      text-align: right;
+    }
+
+    .right-nav h2 {
+      margin: 0 0 10px 0;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+      color: #333;
+    }
+
+    .right-nav a {
+      display: block;
+      margin: 8px 0;
+      color: #444;
+      text-decoration: underline;
+    }
+
+    main {
+      flex: 1;
+      padding: 28px 20px;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 18px 20px;
-      border-top: 1px solid #ddd;
+      justify-content: flex-start;
+    }
+
+    /* MECM section shifted toward the middle-left */
+    .mecm-section {
+      max-width: 640px;
+      margin-left: 18%;
     }
 
     .mecm-link {
-      color: #0066cc; /* blue hyperlink */
+      color: #0066cc;
       text-decoration: underline;
-      font-weight: 600;
+      font-weight: 700;
+      font-size: 18px;
     }
 
-    .project-links a {
-      margin-left: 14px;
-      color: #444;
-      text-decoration: underline;
+    .mecm-overview {
+      margin: 10px 0 0 0;
+      color: #222;
+      line-height: 1.45;
+      max-width: 520px;
     }
   </style>
 </head>
 <body>
-  <header>Brendan's I.T Portfolio</header>
+  <header>
+    <div class="title-block">
+      <h1>Brendan's I.T Portfolio</h1>
 
-  <main>
-    <!-- Resume download button (placeholder filepath) -->
-    <a class="resume-btn" href="files/Brendan_Kyle_Wright_Final.pdf" download>
-      Download Resume
-    </a>
-  </main>
+      <!-- Resume button moved just below the title -->
+      <div class="resume-row">
+        <a class="resume-btn" href="files/Brendan_Kyle_Wright_Final.pdf" download>
+          Download Resume
+        </a>
+      </div>
+    </div>
 
-  <footer>
-    <!-- Bottom left: Blue hyperlink to MECM lab -->
-    <a class="mecm-link" href="mecm-lab.html">Microsoft Endpoint Configuration Manager Lab</a>
-
-    <!-- Bottom right: Placeholder links for more projects -->
-    <div class="project-links">
+    <!-- Project placeholders moved to top-right, stacked top-down -->
+    <nav class="right-nav" aria-label="Other projects">
+      <h2>Other Projects</h2>
       <a href="#">Project Placeholder 1</a>
       <a href="#">Project Placeholder 2</a>
       <a href="#">Project Placeholder 3</a>
-    </div>
-  </footer>
+    </nav>
+  </header>
+
+  <main>
+    <!-- MECM link moved toward middle-left + concise overview -->
+    <section class="mecm-section">
+      <a class="mecm-link" href="mecm-lab.html">Microsoft Endpoint Configuration Manager Lab</a>
+      <p class="mecm-overview">
+        End-to-end MECM home lab build showcasing domain integration, client management, and software/patch deployment.
+        Documentation includes configuration steps and screenshots for portfolio review.
+      </p>
+    </section>
+  </main>
 </body>
 </html>
