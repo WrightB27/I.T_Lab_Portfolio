@@ -3,148 +3,257 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Brendan's I.T Portfolio</title>
+  <title>Brendan's IT Portfolio</title>
+  <meta name="description" content="Brendan's IT Portfolio — projects, labs, documentation, and contact links." />
   <style>
-    body {
-      margin: 0;
-      min-height: 100vh;
-      background: #ffffff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    :root{
+      --bg:#0c0c0c;
+      --fg:#c7f7c7;
+      --dim:#86d686;
+      --accent:#7CFC00;
+      --border:#145214;
+      --shadow: rgba(0,0,0,.55);
+      --font: Consolas, "Cascadia Mono", "Courier New", monospace;
     }
 
-    /* This is your "monitor/desktop" canvas */
-    .screen {
-      width: min(1400px, 98vw);
-      aspect-ratio: 16 / 9;
-      position: relative;
-      background-image: url("Mecm-Lab/screenshots/5eb20e67-5617-4492-acf4-d1c7904706a1.png");
-      background-size: contain;
-      background-position: center;
-      background-repeat: no-repeat;
+    *{ box-sizing:border-box; }
+    html, body{ height:100%; }
+    body{
+      margin:0;
+      background: radial-gradient(1200px 700px at 50% 25%, #0f1a0f 0%, var(--bg) 55%, #000 100%);
+      color:var(--fg);
+      font-family:var(--font);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
     }
 
-    /* Overlay box that sits INSIDE the black command prompt area */
-    .cmd-overlay {
-      position: absolute;
-
-      /* TUNE THESE if needed */
-      left: 22%;
-      top: 33%;
-      width: 58%;
-      height: 48%;
-
-      font-family: Consolas, "Courier New", monospace;
-      color: #21ff4a;
-      line-height: 1.5;
-      overflow: hidden;
-      pointer-events: none; /* so clicks don't get weird outside interactive elements */
+    /* Subtle scanline overlay */
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      background:
+        repeating-linear-gradient(
+          to bottom,
+          rgba(255,255,255,0.03) 0px,
+          rgba(255,255,255,0.03) 1px,
+          rgba(0,0,0,0) 3px,
+          rgba(0,0,0,0) 6px
+        );
+      mix-blend-mode:overlay;
+      opacity:.35;
     }
 
-    /* Make only the interactive items clickable */
-    .cmd-overlay a,
-    .cmd-overlay button {
-      pointer-events: auto;
+    .wrap{
+      width:min(980px, 100%);
     }
 
-    .prompt-line {
-      font-size: clamp(16px, 1.7vw, 22px);
-      font-weight: 600;
-      margin: 0 0 14px 0;
-      white-space: nowrap;
+    /* Fake CMD window */
+    .terminal{
+      background:linear-gradient(180deg, rgba(12,12,12,.96), rgba(0,0,0,.98));
+      border:1px solid var(--border);
+      border-radius:14px;
+      box-shadow: 0 18px 55px var(--shadow);
+      overflow:hidden;
     }
 
-    .cmd-grid {
-      display: grid;
-      grid-template-columns: 1fr 260px;
-      gap: 22px;
-      align-items: start;
+    .titlebar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:10px 14px;
+      border-bottom:1px solid rgba(20,82,20,.65);
+      background:linear-gradient(180deg, rgba(18,18,18,.95), rgba(10,10,10,.95));
+      color:var(--dim);
+      font-size:13px;
+      letter-spacing:.2px;
     }
 
-    .cmd-title {
-      font-size: clamp(16px, 1.6vw, 20px);
-      margin: 0 0 8px 0;
+    .title-left{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      min-width:0;
     }
 
-    .cmd-text {
-      margin: 0 0 14px 0;
-      color: #b8ffbf;
-      font-size: clamp(13px, 1.25vw, 16px);
-      max-width: 62ch;
+    .cmd-icon{
+      width:16px;
+      height:16px;
+      border:1px solid rgba(199,247,199,.35);
+      border-radius:3px;
+      display:grid;
+      place-items:center;
+      font-size:11px;
+      line-height:1;
+      color:var(--fg);
+      opacity:.9;
     }
 
-    .resume-btn {
-      display: inline-block;
-      padding: 10px 14px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: 700;
-      border: 1px solid #21ff4a;
-      color: #21ff4a;
-      background: rgba(0, 0, 0, 0.35);
+    .title-text{
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
     }
 
-    .mecm-link {
-      display: inline-block;
-      margin-top: 10px;
-      color: #21ff4a;
-      text-decoration: underline;
-      font-weight: 700;
-      font-size: clamp(14px, 1.35vw, 18px);
+    .window-controls{
+      display:flex;
+      gap:8px;
+      opacity:.8;
     }
 
-    .right-nav h2 {
-      margin: 0 0 10px 0;
-      font-size: clamp(12px, 1.1vw, 14px);
-      text-transform: uppercase;
-      letter-spacing: 0.3px;
-      color: #b8ffbf;
+    .dot{
+      width:10px;
+      height:10px;
+      border-radius:50%;
+      border:1px solid rgba(199,247,199,.28);
     }
 
-    .right-nav a {
-      display: block;
-      margin: 8px 0;
-      color: #21ff4a;
-      text-decoration: underline;
-      font-size: clamp(13px, 1.2vw, 16px);
+    .content{
+      padding:18px 18px 20px;
+      font-size:15px;
+      line-height:1.5;
+    }
+
+    .line{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      white-space:pre-wrap;
+      word-break:break-word;
+      margin:2px 0;
+    }
+
+    .prompt{
+      color:var(--accent);
+      flex:0 0 auto;
+      user-select:none;
+    }
+
+    .text{
+      color:var(--fg);
+      min-width:0;
+      flex:1 1 auto;
+    }
+
+    /* Placeholder blocks (NO real text content yet) */
+    .placeholder{
+      color:rgba(199,247,199,.55);
+    }
+
+    a{
+      color:var(--accent);
+      text-decoration:none;
+      border-bottom:1px dotted rgba(124,252,0,.55);
+    }
+    a:hover{
+      border-bottom-style:solid;
+    }
+    a:focus-visible{
+      outline:2px solid rgba(124,252,0,.6);
+      outline-offset:3px;
+      border-bottom-color:transparent;
+      border-radius:4px;
+    }
+
+    .divider{
+      height:1px;
+      background:linear-gradient(90deg, rgba(20,82,20,0), rgba(20,82,20,.9), rgba(20,82,20,0));
+      margin:12px 0;
+    }
+
+    /* Cursor */
+    .cursor{
+      display:inline-block;
+      width:10px;
+      height:18px;
+      background:var(--accent);
+      margin-left:3px;
+      transform:translateY(3px);
+      animation:blink 1s steps(2, start) infinite;
+    }
+    @keyframes blink{ to{ visibility:hidden; } }
+
+    /* Footer hint */
+    .hint{
+      margin-top:14px;
+      color:rgba(199,247,199,.55);
+      font-size:12px;
+      text-align:center;
+    }
+
+    /* Mobile tweaks */
+    @media (max-width: 520px){
+      body{ padding:14px; }
+      .content{ padding:14px; font-size:14px; }
+      .titlebar{ font-size:12px; }
     }
   </style>
 </head>
-
 <body>
-  <div class="screen">
-    <div class="cmd-overlay">
-      <p class="prompt-line">C:\Users\Brendan&gt; Welcome to my Lab Portfolio!</p>
+  <main class="wrap">
+    <section class="terminal" aria-label="Command Prompt Portfolio">
+      <header class="titlebar">
+        <div class="title-left">
+          <div class="cmd-icon" aria-hidden="true">C:\</div>
+          <div class="title-text">Command Prompt — Brendan's IT Portfolio</div>
+        </div>
+        <div class="window-controls" aria-hidden="true">
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+      </header>
 
-      <div class="cmd-grid">
-        <!-- Left side content (inside prompt area) -->
-        <div>
-          <p class="cmd-title">Brendan's I.T Portfolio</p>
+      <div class="content" role="region" aria-label="Terminal content">
+        <!-- NOTE: No real text yet (per your instruction). These are structure-only placeholders. -->
 
-          <a class="resume-btn" href="files/Brendan_Kyle_Wright_Final.pdf" download>
-            Download Resume
-          </a>
-
-          <a class="mecm-link" href="mecm-lab.html">
-            Microsoft Endpoint Configuration Manager Lab
-          </a>
-
-          <p class="cmd-text">
-            End-to-end MECM home lab build showcasing domain integration, client management,
-            and software/patch deployment. Documentation includes configuration steps and screenshots.
-          </p>
+        <div class="line">
+          <span class="prompt">C:\Users\Brendan&gt;</span>
+          <span class="text placeholder">[HEADER_LINE_PLACEHOLDER]</span>
         </div>
 
-        <!-- Right side content (inside prompt area) -->
-        <nav class="right-nav" aria-label="Other projects">
-          <h2>Other Projects</h2>
-          <a href="#">Project Placeholder 1</a>
-          <a href="#">Project Placeholder 2</a>
-          <a href="#">Project Placeholder 3</a>
-        </nav>
+        <div class="line">
+          <span class="prompt">C:\Users\Brendan&gt;</span>
+          <span class="text placeholder">[SUBHEADER_LINE_PLACEHOLDER]</span>
+        </div>
+
+        <div class="divider" role="separator" aria-hidden="true"></div>
+
+        <div class="line">
+          <span class="prompt">C:\Users\Brendan&gt;</span>
+          <span class="text placeholder">[NAV_LINKS_PLACEHOLDER]</span>
+        </div>
+
+        <div class="line">
+          <span class="prompt">C:\Users\Brendan&gt;</span>
+          <span class="text placeholder">[FEATURED_PROJECTS_PLACEHOLDER]</span>
+        </div>
+
+        <div class="line">
+          <span class="prompt">C:\Users\Brendan&gt;</span>
+          <span class="text placeholder">[ABOUT_PLACEHOLDER]</span>
+        </div>
+
+        <div class="line">
+          <span class="prompt">C:\Users\Brendan&gt;</span>
+          <span class="text placeholder">[CONTACT_PLACEHOLDER]</span>
+        </div>
+
+        <div class="divider" role="separator" aria-hidden="true"></div>
+
+        <div class="line">
+          <span class="prompt">C:\Users\Brendan&gt;</span>
+          <span class="text placeholder">[FOOTER_PLACEHOLDER]<span class="cursor" aria-hidden="true"></span></span>
+        </div>
       </div>
+    </section>
+
+    <div class="hint" aria-hidden="true">
+      Tip: This layout is ready for command-style text + hyperlinks. Next step is replacing the [PLACEHOLDER] lines with your real content.
     </div>
-  </div>
+  </main>
 </body>
 </html>
