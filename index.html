@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brendan's IT Portfolio</title>
+  <meta name="description" content="Brendan's IT Portfolio — projects, labs, documentation, and contact links." />
+  <style>
+    :root{
+      --bg:#0c0c0c;
+      --fg:#c7f7c7;
+      --dim:#86d686;
+      --accent:#7CFC00;
+      --border:#145214;
+      --shadow: rgba(0,0,0,.55);
+      --font: Consolas, "Cascadia Mono", "Courier New", monospace;
+    }
+
+    *{ box-sizing:border-box; }
+    html, body{ height:100%; }
+    body{
+      margin:0;
+      background: radial-gradient(1200px 700px at 50% 25%, #0f1a0f 0%, var(--bg) 55%, #000 100%);
+      color:var(--fg);
+      font-family:var(--font);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+    }
+
+    /* Subtle scanline overlay */
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      background:
+        repeating-linear-gradient(
+          to bottom,
+          rgba(255,255,255,0.03) 0px,
+          rgba(255,255,255,0.03) 1px,
+          rgba(0,0,0,0) 3px,
+          rgba(0,0,0,0) 6px
+        );
+      mix-blend-mode:overlay;
+      opacity:.35;
+    }
+
+    .wrap{
+      width:min(980px, 100%);
+    }
+
+    /* Fake CMD window */
+    .terminal{
+      background:linear-gradient(180deg, rgba(12,12,12,.96), rgba(0,0,0,.98));
+      border:1px solid var(--border);
+      border-radius:14px;
+      box-shadow: 0 18px 55px var(--shadow);
+      overflow:hidden;
+    }
+
+    .titlebar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:10px 14px;
+      border-bottom:1px solid rgba(20,82,20,.65);
+      background:linear-gradient(180deg, rgba(18,18,18,.95), rgba(10,10,10,.95));
+      color:var(--dim);
+      font-size:13px;
+      letter-spacing:.2px;
+    }
+
+    .title-left{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      min-width:0;
+    }
+
+    .cmd-icon{
+      width:16px;
+      height:16px;
+      border:1px solid rgba(199,247,199,.35);
+      border-radius:3px;
+      display:grid;
+      place-items:center;
+      font-size:11px;
+      line-height:1;
+      color:var(--fg);
+      opacity:.9;
+    }
+
+    .title-text{
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .window-controls{
+      display:flex;
+      gap:8px;
+      opacity:.8;
+    }
+
+    .dot{
+      width:10px;
+      height:10px;
+      border-radius:50%;
+      border:1px solid rgba(199,247,199,.28);
+    }
+
+    .content{
+      padding:18px 18px 20px;
+      font-size:15px;
+      line-height:1.5;
+    }
+
+    .line{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      white-space:pre-wrap;
+      word-break:break-word;
+      margin:2px 0;
+    }
+
+    .prompt{
+      color:var(--accent);
+      flex:0 0 auto;
+      user-select:none;
+    }
+
+    .text{
+      color:var(--fg);
+      min-width:0;
+      flex:1 1 auto;
+    }
+
+    /* Placeholder blocks (NO real text content yet) */
+    .placeholder{
+      color:rgba(199,247,199,.55);
+    }
+
+    a{
+      color:var(--accent);
+      text-decoration:none;
+      border-bottom:1px dotted rgba(124,252,0,.55);
+    }
+    a:hover{
+      border-bottom-style:solid;
+    }
+    a:focus-visible{
+      outline:2px solid rgba(124,252,0,.6);
+      outline-offset:3px;
+      border-bottom-color:transparent;
+      border-radius:4px;
+    }
+
+    .divider{
+      height:1px;
+      background:linear-gradient(90deg, rgba(20,82,20,0), rgba(20,82,20,.9), rgba(20,82,20,0));
+      margin:12px 0;
+    }
+
+    /* Cursor */
+    .cursor{
+      display:inline-block;
+      width:10px;
+      height:18px;
+      background:var(--accent);
+      margin-left:3px;
+      transform:translateY(3px);
+      animation:blink 1s steps(2, start) infinite;
+    }
+    @keyframes blink{ to{ visibility:hidden; } }
+
+    /* Footer hint */
+    .hint{
+      margin-top:14px;
+      color:rgba(199,247,199,.55);
+      font-size:12px;
+      text-align:center;
+    }
+
+    /* Mobile tweaks */
+    @media (max-width: 520px){
+      body{ padding:14px; }
+      .content{ padding:14px; font-size:14px; }
+      .titlebar{ font-size:12px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="terminal" aria-label="Command Prompt Portfolio">
+      <header class="titlebar">
+        <div class="title-left">
+          <div class="cmd-icon" aria-hidden="true">C:\</div>
+          <div class="title-text">Command Prompt — Brendan's IT Portfolio</div>
+        </div>
+        <div class="window-controls" aria-hidden="true">
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+      </header>
+
+      <div class="content" role="region" aria-label="Terminal content">
+        <!-- NOTE: No real text yet (per your instruction). These are structure-only placeholders. -->
+
+        <div class="line">
+          <span class="prompt">C:\Users\Brendan&gt;</span>
+          <span class="text placeholder">[HEADER_LINE_PLACEHOLDER]</span>
+        </div>
+
+        <div class="line">
+          <span class="prompt">C:\Users\Brendan&gt;</span>
+          <span class="text placeholder">[SUBHEADER_LINE_PLACEHOLDER]</span>
+        </div>
+
+        <div class="divider" role="separator" aria-hidden="true"></div>
+
+        <div class="line">
+          <span class="prompt">C:\Users\Brendan&gt;</span>
+          <span class="text placeholder">[NAV_LINKS_PLACEHOLDER]</span>
+        </div>
+
+        <div class="line">
+          <span class="prompt">C:\Users\Brendan&gt;</span>
+          <span class="text placeholder">[FEATURED_PROJECTS_PLACEHOLDER]</span>
+        </div>
+
+        <div class="line">
+          <span class="prompt">C:\Users\Brendan&gt;</span>
+          <span class="text placeholder">[ABOUT_PLACEHOLDER]</span>
+        </div>
+
+        <div class="line">
+          <span class="prompt">C:\Users\Brendan&gt;</span>
+          <span class="text placeholder">[CONTACT_PLACEHOLDER]</span>
+        </div>
+
+        <div class="divider" role="separator" aria-hidden="true"></div>
+
+        <div class="line">
+          <span class="prompt">C:\Users\Brendan&gt;</span>
+          <span class="text placeholder">[FOOTER_PLACEHOLDER]<span class="cursor" aria-hidden="true"></span></span>
+        </div>
+      </div>
+    </section>
+
+    <div class="hint" aria-hidden="true">
+      Tip: This layout is ready for command-style text + hyperlinks. Next step is replacing the [PLACEHOLDER] lines with your real content.
+    </div>
+  </main>
+</body>
+</html>

@@ -60,7 +60,7 @@ This range distributes addresses to domain client systems while reserving lower 
 
 The default lease duration of **8 days** was retained because client systems in this lab environment remain relatively stable on the network.
 
-![SCREENSHOT – DHCP Scope Configuration](/Lab%20Screenshots/DHCP%20scope%20IP%20range%20configuration.png)
+![SCREENSHOT – DHCP Scope Configuration](/Windows%20Server%20Infrastructure%20Lab/Lab%20Screenshots/DHCP%20scope%20IP%20range%20configuration.png)
 
 ## Configuring Scope Options
 
@@ -100,7 +100,7 @@ netsh dhcp show server
 
 The output should display DC01 as an authorized DHCP server. This confirmation ensures that the server is permitted to issue IP address leases within the domain environment.
 
-![SCREENSHOT – DHCP Authorization Confirmation](/Lab%20Screenshots/DHCP%20Server%20authorization.png)
+![SCREENSHOT – DHCP Authorization Confirmation](/Windows%20Server%20Infrastructure%20Lab/Lab%20Screenshots/DHCP%20Server%20authorization.png)
 
 ## DHCP Lease Verification
 
@@ -123,7 +123,7 @@ DNS Suffix: CorpNet.local
 
 Successful lease assignment confirms that DHCP is properly distributing network configuration to domain client systems.
 
-![SCREENSHOT – Client Receiving DHCP Lease](/Lab%20Screenshots/IT%20Client%20ipconfig%20showing%20correct%20parameters.png)
+![SCREENSHOT – Client Receiving DHCP Lease](/Windows%20Server%20Infrastructure%20Lab/Lab%20Screenshots/IT%20Client%20ipconfig%20showing%20correct%20parameters.png)
 
 ## Summary
 

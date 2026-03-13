@@ -15,7 +15,7 @@ Preferred DNS server: **192.168.0.1**
 
 To configure these settings, open **Network and Sharing Center**, select **Change adapter settings**, open the properties of the internal network adapter, select **Internet Protocol Version 4 (TCP/IPv4)**, and manually assign the address information.
 
-![SCREENSHOT – Static IPv4 Configuration on DC01](/Lab%20Screenshots/Static%20IPv4%20Configuration%20on%20DC01.png)
+![SCREENSHOT – Static IPv4 Configuration on DC01](/Windows%20Server%20Infrastructure%20Lab/Lab%20Screenshots/Static%20IPv4%20Configuration%20on%20DC01.png)
 
 ## Installing the AD DS Role
 
@@ -31,7 +31,7 @@ Active Directory Domain Services
 
 Continue through the wizard and install the role.
 
-![SCREENSHOT – AD DS Role Selected in Add Roles and Features Wizard](/Lab%20Screenshots/AD%20DS%20role%20install%20confirmation.png)
+![SCREENSHOT – AD DS Role Selected in Add Roles and Features Wizard](/Windows%20Server%20Infrastructure%20Lab/Lab%20Screenshots/AD%20DS%20role%20install%20confirmation.png)
 
 ## Promoting the Server to a Domain Controller
 
@@ -63,7 +63,7 @@ Open **Active Directory Users and Computers** to verify the domain structure.
 
 Confirm the CorpNet.local domain appears and the server is listed as a domain controller.
 
-![SCREENSHOT – Domain Controller Promotion Configuration](/Lab%20Screenshots/Domain%20Controller%20promotion%20confirmation.png)
+![SCREENSHOT – Domain Controller Promotion Configuration](/Windows%20Server%20Infrastructure%20Lab/Lab%20Screenshots/Domain%20Controller%20promotion%20confirmation.png)
 
 ## Creating Organizational Units
 
@@ -78,7 +78,7 @@ MARKETING
 
 This structure allows Group Policy and administrative permissions to be applied at the department level.
 
-![SCREENSHOT – Active Directory Users and Computers Console](/Lab%20Screenshots/AD%20OU%20Structure.png)
+![SCREENSHOT – Active Directory Users and Computers Console](/Windows%20Server%20Infrastructure%20Lab/Lab%20Screenshots/AD%20OU%20Structure.png)
 
 ## Creating Security Groups
 
@@ -98,7 +98,7 @@ Local_Admins
 
 Permissions are assigned to groups rather than individual user accounts to maintain scalability and enforce the principle of least privilege.
 
-![SCREENSHOT – Security Groups Created](/Lab%20Screenshots/Security%20Group%20Creation.png)
+![SCREENSHOT – Security Groups Created](/Windows%20Server%20Infrastructure%20Lab/Lab%20Screenshots/Security%20Group%20Creation.png)
 
 ## Default Domain Policy Configuration
 
@@ -120,7 +120,7 @@ Enforce password history: **24 passwords**
 
 These settings help protect against weak passwords and reduce the risk of credential compromise.
 
-![SCREENSHOT – Default Domain Policy Password Settings](/Lab%20Screenshots/Default%20Domain%20Policy%20Password%20Settings.png)
+![SCREENSHOT – Default Domain Policy Password Settings](/Windows%20Server%20Infrastructure%20Lab/Lab%20Screenshots/Default%20Domain%20Policy%20Password%20Settings.png)
 
 ### Account Lockout Policy
 
@@ -132,7 +132,7 @@ Reset account lockout counter after: **15 minutes**
 
 These controls temporarily disable accounts after repeated failed login attempts, preventing automated password attacks.
 
-![SCREENSHOT – Default Domain Policy Account Lockout Settings](/Lab%20Screenshots/Default%20Domain%20Policy%20Account%20Lockout%20Settings.png)
+![SCREENSHOT – Default Domain Policy Account Lockout Settings](/Windows%20Server%20Infrastructure%20Lab/Lab%20Screenshots/Default%20Domain%20Policy%20Account%20Lockout%20Settings.png)
 
 ## Restricted Groups Configuration
 
@@ -150,7 +150,7 @@ CorpNet\SCCMAdmin
 
 This ensures administrative privileges remain controlled and consistent across domain systems.
 
-![SCREENSHOT – Restricted Groups Policy Configuration](/Lab%20Screenshots/GPO%20enforcing%20Local%20Admin%20group.png)
+![SCREENSHOT – Restricted Groups Policy Configuration](/Windows%20Server%20Infrastructure%20Lab/Lab%20Screenshots/GPO%20enforcing%20Local%20Admin%20group.png)
 
 ## Summary
 

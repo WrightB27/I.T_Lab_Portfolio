@@ -47,7 +47,7 @@ Ensure the following DNS records are present:
 
 These records form the foundation of name resolution for the domain environment.
 
-![SCREENSHOT – Forward Lookup Zone Showing CorpNet.local](/Lab%20Screenshots/DNS%20Forward%20Lookup%20Zones%20showing%20CorpNet.local.png)
+![SCREENSHOT – Forward Lookup Zone Showing CorpNet.local](/Windows%20Server%20Infrastructure%20Lab/Lab%20Screenshots/DNS%20Forward%20Lookup%20Zones%20showing%20CorpNet.local.png)
 
 ---
 
@@ -110,7 +110,7 @@ This PTR record maps the IP address **192.168.0.1** back to the hostname **DC01.
 
 Reverse lookups are particularly useful for validating connections, analyzing logs, and confirming host identities during troubleshooting.
 
-![SCREENSHOT – PTR Record for DC01](/Lab%20Screenshots/Reverse%20Lookup%20Zone%20PTR%20Record.png)
+![SCREENSHOT – PTR Record for DC01](/Windows%20Server%20Infrastructure%20Lab/Lab%20Screenshots/Reverse%20Lookup%20Zone%20PTR%20Record.png)
 
 ---
 
@@ -136,7 +136,7 @@ With this configuration in place, the DNS server forwards unresolved queries to 
 
 This improves efficiency when resolving internet-based domain names.
 
-![SCREENSHOT – DNS Forwarders Configuration](/Lab%20Screenshots/DNS%20Forwarders%20Configuration.png)
+![SCREENSHOT – DNS Forwarders Configuration](/Windows%20Server%20Infrastructure%20Lab/Lab%20Screenshots/DNS%20Forwarders%20Configuration.png)
 
 ---
 
@@ -184,7 +184,7 @@ The command should return the IP address:
 
 Successful resolution confirms that the DNS server is functioning correctly and that domain hostnames are resolving properly within the network.
 
-![SCREENSHOT – Successful nslookup Test](/Lab%20Screenshots/nslookup%20validation%20results.png)
+![SCREENSHOT – Successful nslookup Test](/Windows%20Server%20Infrastructure%20Lab/Lab%20Screenshots/nslookup%20validation%20results.png)
 
 ---
 
