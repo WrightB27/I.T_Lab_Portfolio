@@ -8,4 +8,4 @@ The network operates within the 192.168.0.0/24 subnet. DC01 is statically assign
 
 DHCP distributes addresses to domain clients while DNS provides internal name resolution for the CorpNet.local domain.
 
-[SCREENSHOT – Network Topology Diagram]
+![Network Topology](/Lab%20Screenshots/Network-Topology.png)

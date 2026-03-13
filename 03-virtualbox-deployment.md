@@ -12,7 +12,7 @@ Complete the registration form.
 Download the 64-bit ISO file.  
 Store the ISO in a designated lab media directory for reuse.
 
-[SCREENSHOT – Microsoft Evaluation Center Download Page]  
+![SCREENSHOT – Microsoft Evaluation Center Download Page](/Lab%20Screenshots/Microsoft%20Eval%20Center%20Download%20Page.png)  
 https://www.microsoft.com/en-us/evalcenter/download-windows-server-2022
 
 The ISO file was later mounted directly into the VirtualBox virtual machine as a virtual optical disk.
@@ -52,7 +52,7 @@ Purpose: Private communication between lab systems (AD, DHCP, SCCM, clients)
 
 This adapter represents the internal corporate LAN.
 
-[SCREENSHOT – Internal Network Adapter Settings]
+![SCREENSHOT – Internal Network Adapter Settings](/Lab%20Screenshots/Internal%20Network%20Adapter%20Settings.png)
 
 ### Adapter 2 – NAT Network
 
@@ -60,7 +60,7 @@ Mode: NAT Network
 Network Name: NATNETWORK  
 Purpose: Provides outbound internet access while maintaining isolation
 
-[SCREENSHOT – NAT Network Adapter Settings]
+![SCREENSHOT – NAT Network Adapter Settings](/Lab%20Screenshots/NAT%20Network%20Adapter%20Settings.png)
 
 ## Installing Windows Server 2022
 
@@ -95,9 +95,9 @@ Verify connectivity:
 
 Ping 192.168.0.1
 
-[SCREENSHOT – Static IP Configuration]
+![SCREENSHOT – Static IP Configuration](/Lab%20Screenshots/Static%20IP%20Configuration.png)
 
-[SCREENSHOT – Successful Ping Test]
+![SCREENSHOT – Successful Ping Test](/Lab%20Screenshots/Sucessful%20Ping%20Test.png)
 
 ## Deployment Justification
 
